@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dune Board Game Rules</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 100% privacy-first analytics -->
+  <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+  <style>
+    .alliances {
+      display: none;
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: #e4e4e4;
+    }
+
+    .alliances.active {
+      display: block;
+    }
+
+    li.faction-rule,
+    li.advanced-rule {
+      display: none;
+    }
+
+    li.faction-rule.active,
+    li.advanced-rule.active {
+      display: revert;
+    }
+
+    .faction-button.active,
+    .advanced-button.active {
+      outline: 3px solid white;
+      opacity: 1;
+    }
+
+    .faction-button,
+    .advanced-button {
+      opacity: 0.7;
+      transition: opacity 0.2s, outline 0.2s;
+      vertical-align: middle;
+    }
+
+    .faction-button img {
+      width: 30px;
+      float: left;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .sectionHeader {
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+      margin-bottom: 0.75rem;
+      border: 0px solid #991b1b;
+      border-radius: 4px;
+      background-color: #991b1b;
+    }
+
+    .element {
+      border: 0px solid #991b1b;
+      border-radius: 4px;
+      background-color: #991b1b;
+    }
+
+
+    .icon::before {
+      margin-right: 0.15rem;
+    }
+
+    /* .faction-rule { }     */
+
+    .harkonnen {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: #b2b2b2;
+    }
+
+    .harkonnen::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/harkonnen-cropped.svg');
+      background-repeat: no-repeat;
+    }
+
+    .atreides {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: #b3bead;
+    }
+
+    .atreides::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/atreides-cropped.svg');
+      background-repeat: no-repeat;
+    }
+
+    .fremen,
+    .fremen-advance {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: #d9c6a4;
+    }
+
+    .fremen::before,
+    .fremen-advance::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/fremen-cropped.svg');
+      background-repeat: no-repeat;
+    }
+
+    .spacing,
+    .spacing-advance {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: #d2aa9b;
+    }
+
+    .spacing::before,
+    .spacing-advance::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/spacing-guild-cropped.svg');
+      background-repeat: no-repeat;
+    }
+
+    .bene {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background-color: #b3b6be;
+    }
+
+    .bene::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/bene-gesserit-cropped.svg');
+      background-repeat: no-repeat;
+    }
+
+    .emperor {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background-color: #b99b99;
+    }
+
+    .emperor::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/emperor-cropped.svg');
+      background-repeat: no-repeat;
+    }
+
+    .advanced::before {
+      content: '⚙️';
+    }
+
+    /* Fixed search bar without overlapping title */
+    .search-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2d3748;
+      padding: 0.5rem;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-container input {
+      width: 250px;
+      padding: 0.25rem;
+      border-radius: 4px;
+      border: none;
+      font-size: 0.875rem;
+      color: black;
+    }
+
+    .content-container {
+      margin-top: 50px;
+    }
+
+    .subsection {
+      padding: 0.8rem;
+      border-radius: 0.25rem;
+      color: #000000;
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      break-inside: avoid-column;
+    }
+
+    .subsection-header {
+      position: sticky;
+      top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      background-color: #dcc68c;
+    }
+
+    .sublist {
+      padding-left: 1.25rem; 
+      list-style-type: circle;
+    }
+
+  </style>
+
+</head>
+
+<body class="bg-gray-900 text-white p-6">
+  <!-- Fixed Search Bar -->
+  <!-- <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search rules..." oninput="searchText()">
+    <button onclick="nextMatch()" class="ml-2 bg-blue-600 text-white px-2 py-1 rounded">Next</button>
+    <button onclick="prevMatch()" class="ml-1 bg-blue-600 text-white px-2 py-1 rounded">Prev</button>
+    <span id="searchCount" class="ml-2 text-white"></span>
+  </div>
+   -->
+
+  <div class="max-w-7xl mx-auto content-container">
+    <h1 class="text-4xl font-bold text-center mb-6">Dune Board Game Player Aid</h1>
+
+    <!-- Faction Buttons and Advanced Rules Toggle -->
+    <div class="flex justify-center flex-wrap gap-2 mb-6">
+      <button onclick="toggleFaction('atreides')" id="btn-atreides" style="background: #b3bead;"
+        class="faction-button px-3 py-1 rounded"><img src="images/atreides-cropped.svg" />Atreides</button>
+      <button onclick="toggleFaction('harkonnen')" id="btn-harkonnen" style="background: #b2b2b2;"
+        class="faction-button bg-red-600 px-3 py-1 rounded"><img src="images/harkonnen-cropped.svg" /> Harkonnen</button>
+      <button onclick="toggleFaction('fremen')" id="btn-fremen" style="background: #d9c6a4;"
+        class="faction-button bg-green-600 px-3 py-1 rounded"><img src="images/fremen-cropped.svg" /> Fremen</button>
+      <button onclick="toggleFaction('spacing')" id="btn-spacing" style="background: #d2aa9b;"
+        class="faction-button bg-yellow-600 px-3 py-1 rounded"><img src="images/spacing-guild-cropped.svg" /> Spacing
+        Guild</button>
+      <button onclick="toggleFaction('bene')" id="btn-bene" style="background: #b4b6bf;"
+        class="faction-button bg-purple-600 px-3 py-1 rounded"><img src="images/bene-gesserit-cropped.svg" /> Bene
+        Gesserit</button>
+      <button onclick="toggleFaction('emperor')" id="btn-emperor" style="background: #b99b99;"
+        class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/emperor-cropped.svg" /> Emperor</button>
+      <div class="w-8"></div>
+      <button onclick="toggleAdvancedRules()" id="btn-advanced"
+        class="advanced-button bg-orange-600 px-3 py-1 rounded">⚙️ Advanced Rules</button>
+      <button onclick="toggleAlliances()" id="btn-alliances" class="advanced-button bg-orange-600 px-3 py-1 rounded">⚙️
+        Alliances</button>
+    </div>
+
+    <div class="columns-md gap-4">
+
+      <!-- START Section -->
+      <!-- <h2 class="bg-red-800 text-white text-xl font-bold px-3 py-2 rounded mb-3">START</h2> -->
+      <h2 class="sectionHeader">START</h2>
+      <div class="bg-white text-black p-4 rounded shadow mb-6 space-y-2">
+        <ul class="list-disc pl-5  list-outside ul:list-revert">
+          <li>Each player receives 4 random Traitor Cards and keeps 1 (either opponent or own leader). </li>
+          <li class="faction-rule harkonnen-rule">
+            <div class="harkonnen">HARKONNEN keeps all 4. (Optional): Once and only once, HARKONNEN allowed to discard
+              hand and redraw 4 other Traitor Cards.</div>
+          </li>
+          <!--TLEILAXU receives no traitors. After unused Traitor Cards returned to deck, shuﬄe deck and take top 3 cards. They are Face Dancers.
+        • Set up as per player shield. 1 Treachery Card. 2 for HARKONNEN (needs 2 cards in total, so draw 1 more).-->
+          <li>Each player receives Treachery Cards based on setup.</li>
+          <li>Set up spice, storm, and alliances as per game rules.</li>
+          <li>Place troops as per faction rules.</li>
+          <li class="faction-rule bene-advance-rule">
+            <div class="bene"><b>(Advanced)</b> Instead of starting in the Polar Sink, BENE GESSERIT place one peaceful
+              advisor in any territory of your choice. If they are alone in the territory, flip the advisor to a
+              fighter.</div>
+          </li>
+          <li>Special faction setup rules may apply.</li>
+        </ul>
+      </div>
+
+      <!-- Game Turn Section -->
+      <h2 class="sectionHeader">GAME TURN (MAX 10 TURNS)</h2>
+      <div class="space-y-4">
+
+        
+        <div class="subsection">
+          <h3 class="subsection-header">1. STORM</h3>
+          <ul class="list-disc pl-5 ">            
+            <li><strong>(Round 1 only)</strong>  Players to the left and right of the storm each use a battle wheel to dial a number from 0 to 20. The sum advances the storm for Round 1.</li>
+              <li class="faction-rule  no-fremen-rule ">
+                (Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.
+                </li>
+              <li class="faction-rule  fremen-basic-rule ">
+                <div class="fremen">(Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.</div>
+                </li>
+              <li class="faction-rule  fremen-advance-rule ">
+                <div class="fremen"><strong>(Advanced)</strong> FREMEN randomly pick a STORM card to be revealed next round. FREMEN can immediately see the card. The following round, IXIAN may move HMS then FREMEN advance the storm as indicated by card. Return card to deck then redo the process.</div>
+                </li>
+              <li>Forces &amp; Spice in desert touched by Storm go to Tleilaxu Tanks and Spice Bank.</li>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">2. SPICE BLOW</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>Reveal top card. (Round 1 only) Ignore worms and Nexus. Reshuﬄe worms in deck after phase over.</li>
+              <ul class="sublist">
+              <li>If Territory card, place Spice unless Storm in sector.</li>
+              </ul>
+              <ul class="sublist">
+              <li>If Worm, Forces and Spice removed from previous territory, then draw until Territory card revealed. Then Nexus happens.</li>
+              </ul>
+              <ul class="sublist">
+              <li class="faction-rule  fremen-rule ">
+                <div class="fremen">FREMEN are not devoured by Shai-Hulud. They may ride the sandworm to any location on the board following resolution of the Nexus. If an additional sandworm is drawn the Fremen may redirect it to any sand territory.</div>
+                </li>
+              </ul>
+              <ul class="sublist">
+              <li class="faction-rule  advance-rule ">
+                <strong>(Advanced)</strong> The same rules except there will be two discard piles (Pile A and Pile B). Treat each pile independently.
+                </li>
+              </ul>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">3. CHOAM CHARITY</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>Players with 0 or 1 Spice can collect Spice to bring their total to 2 Spice by calling out "CHOAM Charity".</li>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">4. BIDDING</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>(Default rule): Players must announce how many cards they hold. Same # of Treachery Cards as # players holding less than max hand. (4 default, 5 for CHOAM, 8 for HARKONNEN).</li>
+              <li class="faction-rule  atreides-rule ">
+                <div class="atreides">ATREIDES may look at each card as it is offered for auction.</div>
+                </li>
+              <li>Players take turns to initiate bidding (starting with First Player and then to the right of previous first bidder).</li>
+              <li class="faction-rule  emperor-rule ">
+                <div class="emperor">Min bid 1 Spice. Pay to EMPEROR. EMPEROR always pays to Bank.</div>
+                </li>
+              <li class="faction-rule  no-emperor-rule ">
+                Min bid 1 Spice. Pay to the Bank.
+                </li>
+              <li>Auction until all cards claimed, or 1 card unwanted (remaining cards return to top of deck).</li>
+              <li class="faction-rule  harkonnen-rule ">
+                <div class="harkonnen">HARKONNEN may take an additional Treachery Card from the deck for each one they win at auction.</div>
+                </li>
+              <li class="faction-rule alliances no-emperor-rule ">
+                <strong>Alliances:</strong> A player may pay for part or all of the cost of a treachery card purchased by an ally. They may pay up to, but not more than, the amount of spice equal to the card's purchase price. The player gives this spice directly the bank. As a bidder you cannot bid more than the total of the spice you have plus the spice that your ally is willing to give to you to help pay for the card.
+                </li>
+              <li class="faction-rule alliances emperor-rule ">
+                <div class="emperor"><strong>Alliances:</strong> A player may pay for part or all of the cost of a treachery card purchased by an ally. They may pay up to, but not more than, the amount of spice equal to the card's purchase price. The player gives this spice directly to the EMPEROR. If the EMPEROR is the player aiding the ally, however, the spice goes to the ally and is then paid back to the EMPEROR. As a bidder you cannot bid more than the total of the spice you have plus the spice that your ally is willing to give to you to help pay for the card.</div>
+                </li>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">5. REVIVAL</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>Players may revive up to 3 troops to their reserve, paying 2 Spice / troop after free revivals limits.</li>
+              <li>Players may revive 1 leader per turn once all their leaders have been sent to tanks</li>
+              <ul class="sublist">
+              <li>Must pay the leader's combat value in spice</li>
+              </ul>
+              <ul class="sublist">
+              <li>Revived leaders may not be revived again until all leaders for that player have been revived and sent back to the tanks.</li>
+              </ul>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">6. SHIPMENT &amp; MOVEMENT</h3>
+          <ul class="list-disc pl-5 ">            
+            <li class="faction-rule  atreides-rule ">
+                <div class="atreides">ATREIDES may look at the top card of the Spice Deck before any player acts in this phase.</div>
+                </li>
+              <li><em>No Shipment/Movement:</em> from / through / into sector in Storm, territory with ally, Stronghold with forces of 2 other factions.</li>
+              <li class="faction-rule  fremen-rule ">
+                <div class="fremen"><em>During Shipment only</em>, FREMEN may bring their reserves into the storm (losing half).</div>
+                </li>
+              <li><strong><em>Shipment</em></strong></li>
+              <li class="faction-rule  spacing-rule ">
+                <div class="spacing">SPACING GUILD may choose to make your shipment and movement at any time they choose in this phase. Pay shipping costs to the Spice Bank.</div>
+                </li>
+              <li class="faction-rule  spacing-rule ">
+                Add forces from reserves to any 1 territory. 1 Spice per force into Stronghold, 2 Spice per force into other territory. Pay to SPACING GUILD (SPACING GUILD pays to the Bank).
+                </li>
+              <li class="faction-rule  no-spacing-rule ">
+                Add forces from reserves on any 1 territory. 1 Spice per force into Stronghold, 2 Spice per force into other territory. Pay to the Bank.
+                </li>
+              <li class="faction-rule  bene-rule ">
+                <div class="bene">Anytime a player ships from off-planet, BENE GESSERIT may ship 1 advisor for free to the same territory (including Mobile Stronghold) or to the Polar Sink.</div>
+                </li>
+              <li class="faction-rule  fremen-rule ">
+                <div class="fremen">FREMEN may bring any or all of their reserves for free onto or within two territories of the Great Flat.</div>
+                </li>
+              <li class="faction-rule  fremen-advance-rule ">
+                <div class="fremen"><strong>(Advanced)</strong> FREMEN allowed to move through/ship in Storm at half loss.</div>
+                </li>
+              <ul class="sublist">
+              <li>Be clear into which sector you ship or move.</li>
+              </ul>
+              <li><strong><em>Movement</em></strong></li>
+              <li>Move any number of forces from any 1 territory to adjacent territory. Move up to 3 territories if you have presence in Arrakeen or Carthag. (sectors don't count for movement distance)</li>
+              <ul class="sublist">
+              <li>You may move the same forces you shipped.</li>
+              </ul>
+              <ul class="sublist">
+              <li class="faction-rule  fremen-rule ">
+                <div class="fremen">FREMEN forces may move two territories on foot.</div>
+                </li>
+              </ul>
+              <ul class="sublist">
+              <li>Moving to a diferent sector within same territory counts as a movement action.</li>
+              </ul>
+              <li class="faction-rule  spacing-rule ">
+                <div class="spacing">SPACING GUILD may make one of three types of shipment and then one movement: [1] Ship from home planet to Dune. [2] Ship from one territory to another. [3] Ship from Dune to home planet.</div>
+                </li>
+              <li class="faction-rule alliances no-spacing-rule ">
+                <strong>Alliances:</strong> A player may pay for part or all of the cost of an ally's shipment. They may pay up to, but not more than, the amount of spice equal to the shipment's cost. The player gives this spice directly to the bank.
+                </li>
+              <li class="faction-rule alliances spacing-rule ">
+                <div class="spacing"><strong>Alliances:</strong> A player may pay for part or all of the cost of an ally's shipment. They may pay up to, but not more than, the amount of spice equal to the shipment's cost. The player gives this spice directly to the SPACING GUILD. Any spice that the SPACING GUILD is paying for the shipment goes to the Spice Bank.</div>
+                </li>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">7. BATTLE</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>Happens in all territories with 2+ factions, except if separated by Storm, or at Polar Sink.</li>
+              <li>First Player is aggressor and must resolve ALL their battles. Then the aggressor passes to the right and so on. Aggressor wins ties.</li>
+              <li>Combatants secretly dial a number from 0 to total strength of Forces in territory, and leader/cheap hero (mandatory unless none available, must announce if so), and optionally 1 weapon and/or 1 defense treachery card if leader/cheap hero present. (Useless card replaces a weapon/defense card). Weapon kills leader unprotected by defense. Killed leaders don't count in battle.</li>
+              <li class="faction-rule  basic-rule ">
+                (Basic) Forces have 1 combat strength per token.
+                </li>
+              <li class="faction-rule  advance-rule ">
+                <strong>(Advanced)</strong> Forces have 0.5 combat strength per token (Emperor Sardaukar is 1) unless fed 1 spice per Force, then they are worth 1 strength (Sardaukar is 2)
+                </li>
+              <li class="faction-rule  fremen-rule ">
+                <div class="fremen">FREMEN forces fight at full strength without paying spice. FREMEN Fedaykin commandos are worth two normal forces in battle and when taking losses.</div>
+                </li>
+              <li class="faction-rule  bene-rule ">
+                <div class="bene">BENE GESSERIT may Voice opponents to play or not play cards.</div>
+                </li>
+              <li class="faction-rule  atreides-rule ">
+                <div class="atreides">ATREIDES may force their opponent to reveal either their dial value, leader, weapon card, or defence card.</div>
+                </li>
+              <li class="faction-rule  harkonnen-rule ">
+                <div class="harkonnen">HARKONNEN may capture a random leader from their oppenent if HARKONNEN win the battle. They may either (a) immediately kill the leader and receive 2 spice or (b) keep the leader to use in battle, but then return that leader to their faction once used.</div>
+                </li>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">8. SPICE HARVEST</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>Collect spice from territories.</li>
+              <ul class="sublist">
+              <li>2 Spice per Forces in sector of territory, or 3 Spice per Forces if player controls Arrakeen or Carthag. (3 Spice per IXIAN Cyborg)</li>
+              </ul>
+              <ul class="sublist">
+              <li class="faction-rule  advance ">
+                <strong>(Advanced)</strong> In addition, 2 Spice each for who occupies Arrakeen/Carthag and 1 Spice for Tuek's Sietch.
+                </li>
+              </ul>
+              </ul>
+        </div>
+        
+        <div class="subsection">
+          <h3 class="subsection-header">9. MENTAT PAUSE PHASE</h3>
+          <ul class="list-disc pl-5 ">            
+            <li>Players gather the Spice they received as bribes (from in front of their shields).</li>
+              <li>If players in an alliance have forces in 4 strongholds, they win the game.</li>
+              <li>If a player not in an alliance has forces in 3 strongholds, they win the game.</li>
+              <li class="faction-rule  fremen-rule ">
+                <div class="fremen">FREMEN win if: 1) FREMEN or no faction occupies Sietch Tabr and Habbanya Sietch, and 2) None of the great houses (Harkonnen, Atreides, Richese, or the Emperor) occupies Tuek's Sietch.</div>
+                </li>
+              <li class="faction-rule  spacing-rule ">
+                <div class="spacing">SPACING GUILD win if no other faction has won the game by the end</div>
+                </li>
+              </ul>
+        </div>
+        
+
+
+  <!-- Script for Factions and Advanced Rules -->
+  <script>
+    const activeFactions = new Set();
+    let isAdvancedRulesActive = false;
+
+    function toggleFaction(faction) {
+      const button = document.getElementById(`btn-${faction}`);
+      button.classList.toggle('active');
+      setActiveFactions();
+      updateFactionRules();
+    }
+
+    function setActiveFactions() {
+      isAdvancedRulesActive = document.getElementById('btn-advanced').classList.contains('active');
+      activeFactions.clear();
+
+      if (isAdvancedRulesActive)
+        activeFactions.add(isAdvancedRulesActive ? 'advance' : 'basic');
+
+      ['atreides', 'harkonnen', 'fremen', 'spacing', 'bene', 'emperor'].forEach(faction => {
+        const button = document.getElementById(`btn-${faction}`);
+        const isActive = button.classList.contains('active');
+
+        activeFactions.add(isAdvancedRulesActive ? 'advance-rule' : 'basic-rule');
+        activeFactions.add(`${isActive ? '' : 'no-'}${faction}-rule`);
+        if (isActive) {
+          activeFactions.add(`${faction}-${isAdvancedRulesActive ? 'advance' : 'basic'}-rule`);
+        }
+      });
+
+      console.log(activeFactions);
+    }
+
+    function updateFactionRules() {
+      document.querySelectorAll('.faction-rule').forEach(rule => {
+        const rules = Array.from(rule.classList).filter(cls => cls !== 'faction-rule' && cls !== 'active' && cls !== 'list-item');
+        rule.classList.toggle('active', rules.every(f => activeFactions.has(f)));
+        console.log(rules);
+        console.log(rules.every(f => activeFactions.has(f)));
+        console.log(activeFactions);
+      });
+    }
+
+    function highlightTerm(search, color) {
+      search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+      var re = new RegExp(search, 'g');
+      var divs = document.getElementsByTagName("div");
+      for (var i = 0; i < divs.length; i++) {
+        divs[i].innerHTML = divs[i].innerHTML.replace(re, `<span style="color: ${color}; font-weight: 500;">$&</span>`);
+      }
+    }
+    function highlight() {
+      highlightTerm("ATREIDES", "#485d33");
+      highlightTerm("FREMEN", "#b58d49");
+      highlightTerm("HARKONNEN", "#000000");
+      highlightTerm("BENE GESSERIT", "#40495e");
+      highlightTerm("SPACING GUILD", "#a75837");
+      highlightTerm("EMPEROR", "#743734");
+    }
+
+    function toggleAlliances() {
+      document.getElementById('btn-alliances').classList.toggle('active');
+      document.querySelectorAll('.alliances').forEach(rule => {
+        rule.classList.toggle('active');
+      });
+    }
+
+    function toggleAdvancedRules() {
+      document.getElementById('btn-advanced').classList.toggle('active');
+      setActiveFactions();
+      updateFactionRules();
+      highlight();
+    }
+
+    setActiveFactions();
+    updateFactionRules();
+    highlight();
+
+  </script>
+
+
+
+
+  <script>
+    let currentMatchIndex = -1;
+    let matches = [];
+
+    function searchText() {
+      const term = document.getElementById("searchInput").value.trim().toLowerCase();
+      const content = document.querySelector(".content-container");
+
+      document.querySelectorAll(".highlight").forEach(el => {
+        el.replaceWith(...el.childNodes);
+      });
+
+      if (term === "") {
+        document.getElementById("searchCount").textContent = "";
+        return;
+      }
+
+      const regex = new RegExp(`(${term})`, "gi");
+      const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null, false);
+
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (regex.test(node.nodeValue)) {
+          const span = document.createElement("span");
+          span.innerHTML = node.nodeValue.replace(regex, `<mark class="highlight">$1</mark>`);
+          matches.push(span.querySelector(".highlight"));
+          node.replaceWith(span);
+        }
+      }
+
+      document.getElementById("searchCount").textContent = matches.length > 0 ? `Matches: ${matches.length}` : "No results";
+      if (matches.length > 0) nextMatch();
+    }
+
+    function nextMatch() {
+      if (matches.length === 0) return;
+      currentMatchIndex = (currentMatchIndex + 1) % matches.length;
+      scrollToMatch();
+    }
+
+    function prevMatch() {
+      if (matches.length === 0) return;
+      currentMatchIndex = (currentMatchIndex - 1 + matches.length) % matches.length;
+      scrollToMatch();
+    }
+
+    function scrollToMatch() {
+      matches.forEach(el => el.classList.remove("bg-red-400"));
+      matches[currentMatchIndex].classList.add("bg-red-400");
+      matches[currentMatchIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  </script>
+</body>
+
+</html>
