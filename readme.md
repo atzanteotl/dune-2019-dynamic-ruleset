@@ -5,10 +5,11 @@ A live version is [available here](http://andrewc.me/dune/).
 
 **Rules Guidelines**
 
-- Rules must be written in active voice.
+- Rules must be written in active voice, with subject-verb-object wherever possible (e.g. "Players must announce how many cards..."")
 - General rules should start with the noun "Players".
 - Faction specific rules should start with the faction name.
 - Indented rules are clarifications, constraints, or exceptions for the parent rule.
+- Clarifications and constraints do not need to name the subject of the sentence.
 - Optional rules use the word "may"; compulsory rules use "must".
 
 
