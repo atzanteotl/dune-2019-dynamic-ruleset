@@ -6,18 +6,22 @@ class1,class2,class3,faction,section,subsection,depth,rule
 ,,,,START,,1,Place troops as per faction rules.
 ,bene-advance-rule,,bene,START,,1,"**(Advanced)** Instead of starting in the Polar Sink, BENE GESSERIT place one peaceful advisor in any territory of your choice. If they are alone in the territory, flip the advisor to a fighter."
 ,,,,START,,1,Special faction setup rules may apply.
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),1. STORM,1,"IXIAN may move the Hidden Mobile Stronghold up to 3 territories before the storm is revealed, picking up spice they you move."
 ,,,,GAME TURN (MAX 10 TURNS),1. STORM,1,**(Round 1 only)**  Players to the left and right of the storm each use a battle wheel to dial a number from 0 to 20. The sum advances the storm for Round 1.
 ,no-fremen-rule,,,GAME TURN (MAX 10 TURNS),1. STORM,1,(Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.
-,fremen-basic-rule,,fremen,GAME TURN (MAX 10 TURNS),1. STORM,1,(Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.
-,fremen-advance-rule,,fremen,GAME TURN (MAX 10 TURNS),1. STORM,1,"**(Advanced)** FREMEN randomly pick a STORM card to be revealed next round. FREMEN can immediately see the card. The following round, IXIAN may move HMS then FREMEN advance the storm as indicated by card. Return card to deck then redo the process."
-,,,,GAME TURN (MAX 10 TURNS),1. STORM,1,Forces &amp; Spice in desert touched by Storm go to Tleilaxu Tanks and Spice Bank.
-,,,,GAME TURN (MAX 10 TURNS),2. SPICE BLOW,1,Reveal top card. (Round 1 only) Ignore worms and Nexus. Reshuﬄe worms in deck after phase over.
+,fremen-basic-rule,,,GAME TURN (MAX 10 TURNS),1. STORM,1,(Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.
+,fremen-advance-rule,,fremen,GAME TURN (MAX 10 TURNS),1. STORM,1,"**(Advanced)** FREMEN randomly pick a STORM card to be revealed next round. FREMEN can immediately see the card. The following round,FREMEN advance the storm as indicated by card. Return card to deck then redo the process."
+,,,,GAME TURN (MAX 10 TURNS),1. STORM,2,Forces &amp; Spice in desert touched by Storm go to Tleilaxu Tanks and Spice Bank.
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),1. STORM,2,IXIAN  Hidden Mobile Stronghold is immune to storms and worms.
+,,,,GAME TURN (MAX 10 TURNS),2. SPICE BLOW,1,Reveal top card. (Round 1 only) Ignore worms and Nexus. Reshuffle worms in deck after phase over.
 ,,,,GAME TURN (MAX 10 TURNS),2. SPICE BLOW,2,"If Territory card, place Spice unless Storm in sector."
 ,,,,GAME TURN (MAX 10 TURNS),2. SPICE BLOW,2,"If Worm, Forces and Spice removed from previous territory, then draw until Territory card revealed. Then Nexus happens."
 ,fremen-rule,,fremen,GAME TURN (MAX 10 TURNS),2. SPICE BLOW,2,FREMEN are not devoured by Shai-Hulud. They may ride the sandworm to any location on the board following resolution of the Nexus. If an additional sandworm is drawn the Fremen may redirect it to any sand territory.
 ,advance-rule,,,GAME TURN (MAX 10 TURNS),2. SPICE BLOW,2,**(Advanced)** The same rules except there will be two discard piles (Pile A and Pile B). Treat each pile independently.
 ,,,,GAME TURN (MAX 10 TURNS),3. CHOAM CHARITY,1,"Players with 0 or 1 Spice can collect Spice to bring their total to 2 Spice by calling out ""CHOAM Charity""."
-,,,,GAME TURN (MAX 10 TURNS),4. BIDDING,1,"(Default rule): Players must announce how many cards they hold. Same # of Treachery Cards as # players holding less than max hand. (4 default, 5 for CHOAM, 8 for HARKONNEN)."
+,,,,GAME TURN (MAX 10 TURNS),4. BIDDING,1,(Default rule): Players must announce how many cards they hold. Same # of Treachery Cards as # players holding less than max hand. (4 default).
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),4. BIDDING,1,IXIAN draw one more Treachery Cards than number of players and select one to return to the deck. Auction out the others. 
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),4. BIDDING,2,IXIAN may swap out a Treachery Card about to be auctioned with one from their hand *once* per Bidding Phase.
 ,atreides-rule,,atreides,GAME TURN (MAX 10 TURNS),4. BIDDING,1,ATREIDES may look at each card as it is offered for auction.
 ,,,,GAME TURN (MAX 10 TURNS),4. BIDDING,1,Players take turns to initiate bidding (starting with First Player and then to the right of previous first bidder).
 ,emperor-rule,,emperor,GAME TURN (MAX 10 TURNS),4. BIDDING,1,Min bid 1 Spice. Pay to EMPEROR. EMPEROR always pays to Bank.
@@ -27,25 +31,27 @@ class1,class2,class3,faction,section,subsection,depth,rule
 alliances,no-emperor-rule,,,GAME TURN (MAX 10 TURNS),4. BIDDING,1,"**Alliances:** A player may pay for part or all of the cost of a treachery card purchased by an ally. They may pay up to, but not more than, the amount of spice equal to the card's purchase price. The player gives this spice directly the bank. As a bidder you cannot bid more than the total of the spice you have plus the spice that your ally is willing to give to you to help pay for the card."
 alliances,emperor-rule,,emperor,GAME TURN (MAX 10 TURNS),4. BIDDING,1,"**Alliances:** A player may pay for part or all of the cost of a treachery card purchased by an ally. They may pay up to, but not more than, the amount of spice equal to the card's purchase price. The player gives this spice directly to the EMPEROR. If the EMPEROR is the player aiding the ally, however, the spice goes to the ally and is then paid back to the EMPEROR. As a bidder you cannot bid more than the total of the spice you have plus the spice that your ally is willing to give to you to help pay for the card."
 ,,,,GAME TURN (MAX 10 TURNS),5. REVIVAL,1,"Players may revive up to 3 troops to their reserve, paying 2 Spice / troop after free revivals limits."
-,,,,GAME TURN (MAX 10 TURNS),5. REVIVAL,1,Players may revive 1 leader per turn once all their leaders have been sent to tanks
-,,,,GAME TURN (MAX 10 TURNS),5. REVIVAL,2,Must pay the leader's combat value in spice
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),5. REVIVAL,2,IXIAN Cyborg cost 3 Spice to revive.
+,,,,GAME TURN (MAX 10 TURNS),5. REVIVAL,1,Players may revive 1 leader per turn once all their leaders have been sent to tanks.
+,,,,GAME TURN (MAX 10 TURNS),5. REVIVAL,2,Must pay the leader's combat value in spice.
 ,,,,GAME TURN (MAX 10 TURNS),5. REVIVAL,2,Revived leaders may not be revived again until all leaders for that player have been revived and sent back to the tanks.
 ,atreides-rule,,atreides,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,ATREIDES may look at the top card of the Spice Deck before any player acts in this phase.
 ,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"*No Shipment/Movement:* from / through / into sector in Storm, territory with ally, Stronghold with forces of 2 other factions."
-,fremen-rule,,fremen,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"*During Shipment only*, FREMEN may bring their reserves into the storm (losing half)."
-,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,0,***Shipment***
+,fremen-rule,,fremen,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,0,"*During Shipment only*, FREMEN may bring their reserves into the storm (losing half)."
+,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,***Shipment***
 ,spacing-rule,,spacing,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,SPACING GUILD may choose to make your shipment and movement at any time they choose in this phase. Pay shipping costs to the Spice Bank.
 ,spacing-rule,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"Add forces from reserves to any 1 territory. 1 Spice per force into Stronghold, 2 Spice per force into other territory. Pay to SPACING GUILD (SPACING GUILD pays to the Bank)."
 ,no-spacing-rule,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"Add forces from reserves on any 1 territory. 1 Spice per force into Stronghold, 2 Spice per force into other territory. Pay to the Bank."
 ,bene-rule,,bene,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"Anytime a player ships from off-planet, BENE GESSERIT may ship 1 advisor for free to the same territory (including Mobile Stronghold) or to the Polar Sink."
 ,fremen-rule,,fremen,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,FREMEN may bring any or all of their reserves for free onto or within two territories of the Great Flat.
-,fremen-advance-rule,,fremen,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,**(Advanced)** FREMEN allowed to move through/ship in Storm at half loss.
-,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,Be clear into which sector you ship or move.
-,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,0,***Movement***
-,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,Move any number of forces from any 1 territory to adjacent territory. Move up to 3 territories if you have presence in Arrakeen or Carthag. (sectors don't count for movement distance)
+,fremen-advance-rule,,fremen,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,**(Advanced)** FREMEN allowed to move through/ship in Storm at half loss.
+,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,0,Be clear into which sector you ship or move.
+,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,***Movement***
+,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,Move any number of forces from any 1 territory to adjacent territory. Move up to 3 territories if you have presence in Arrakeen or Carthag. (sectors don't count for movement distance)
 ,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,You may move the same forces you shipped.
 ,fremen-rule,,fremen,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,FREMEN forces may move two territories on foot.
-,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,Moving to a diferent sector within same territory counts as a movement action.
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,2,IXIAN Forces that include Cyborgs may move two territories on foot.
+,,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,Moving to a diferent sector within same territory counts as a movement action.
 ,spacing-rule,,spacing,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,SPACING GUILD may make one of three types of shipment and then one movement: [1] Ship from home planet to Dune. [2] Ship from one territory to another. [3] Ship from Dune to home planet.
 alliances,no-spacing-rule,,,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"**Alliances:** A player may pay for part or all of the cost of an ally's shipment. They may pay up to, but not more than, the amount of spice equal to the shipment's cost. The player gives this spice directly to the bank."
 alliances,spacing-rule,,spacing,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEMENT,1,"**Alliances:** A player may pay for part or all of the cost of an ally's shipment. They may pay up to, but not more than, the amount of spice equal to the shipment's cost. The player gives this spice directly to the SPACING GUILD. Any spice that the SPACING GUILD is paying for the shipment goes to the Spice Bank."
@@ -55,12 +61,14 @@ alliances,spacing-rule,,spacing,GAME TURN (MAX 10 TURNS),6. SHIPMENT &amp; MOVEM
 ,basic-rule,,,GAME TURN (MAX 10 TURNS),7. BATTLE,1,(Basic) Forces have 1 combat strength per token.
 ,advance-rule,,,GAME TURN (MAX 10 TURNS),7. BATTLE,1,"**(Advanced)** Forces have 0.5 combat strength per token (Emperor Sardaukar is 1) unless fed 1 spice per Force, then they are worth 1 strength (Sardaukar is 2)"
 ,fremen-rule,,fremen,GAME TURN (MAX 10 TURNS),7. BATTLE,1,FREMEN forces fight at full strength without paying spice. FREMEN Fedaykin commandos are worth two normal forces in battle and when taking losses.
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),7. BATTLE,1,IXIAN Cyborg are worth two normal forces in battle. Suboids are worth half a force. Suboids cannot be supported with spice but each can be sacrificed to spare a Cyborg that would be lost after battle.
 ,bene-rule,,bene,GAME TURN (MAX 10 TURNS),7. BATTLE,1,BENE GESSERIT may Voice opponents to play or not play cards.
 ,atreides-rule,,atreides,GAME TURN (MAX 10 TURNS),7. BATTLE,1,"ATREIDES may force their opponent to reveal either their dial value, leader, weapon card, or defence card."
 ,harkonnen-rule,,harkonnen,GAME TURN (MAX 10 TURNS),7. BATTLE,1,"HARKONNEN may capture a random leader from their oppenent if HARKONNEN win the battle. They may either (a) immediately kill the leader and receive 2 spice or (b) keep the leader to use in battle, but then return that leader to their faction once used."
-,,,,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,1,Collect spice from territories.
-,,,,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,2,"2 Spice per Forces in sector of territory, or 3 Spice per Forces if player controls Arrakeen or Carthag. (3 Spice per IXIAN Cyborg)"
-,advance,,,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,2,"**(Advanced)** In addition, 2 Spice each for who occupies Arrakeen/Carthag and 1 Spice for Tuek's Sietch."
+,,,,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,2,Players collect spice from territories.
+,,,,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,2,"2 Spice per Force in territory, or 3 Spice per Force if player controls Arrakeen or Carthag."
+,ixian-rule,,ixian,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,2,IXIAN Cyborg collect 3 Spicer per Force in sector
+,advance,,,GAME TURN (MAX 10 TURNS),8. SPICE HARVEST,1,"**(Advanced)** In addition, 2 Spice each for who occupies Arrakeen/Carthag and 1 Spice for Tuek's Sietch."
 ,,,,GAME TURN (MAX 10 TURNS),9. MENTAT PAUSE PHASE,1,Players gather the Spice they received as bribes (from in front of their shields).
 ,,,,GAME TURN (MAX 10 TURNS),9. MENTAT PAUSE PHASE,1,"If players in an alliance have forces in 4 strongholds, they win the game."
 ,,,,GAME TURN (MAX 10 TURNS),9. MENTAT PAUSE PHASE,1,"If a player not in an alliance has forces in 3 strongholds, they win the game."

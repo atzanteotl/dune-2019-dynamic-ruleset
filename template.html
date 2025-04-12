@@ -11,6 +11,16 @@
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 
   <style>
+    :root {
+      --atreides-light: #b3bead;
+      --harkonnen-light: #b2b2b2;
+      --fremen-light: #d9c6a4;
+      --spacing-light: #d2aa9b;
+      --bene-light: #b4b6bf;
+      --emperor-light: #b99b99;
+      --ixian-light: #cdd1b8;          
+    }
+  
     .alliances {
       display: none;
       padding: 0.3rem 0.2rem 0.3rem 0.3rem;
@@ -75,12 +85,24 @@
       margin-right: 0.15rem;
     }
 
-    /* .faction-rule { }     */
-
+    /* faction styles */
+    
+    .atreides {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: var(--atreides-light);
+    }
+    
+    .atreides::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/atreides-cropped.svg');
+      background-repeat: no-repeat;
+    }
+    
     .harkonnen {
       padding: 0.3rem 0.2rem 0.3rem 0.3rem;
       border-radius: 3px;
-      background: #b2b2b2;
+      background: var(--harkonnen-light);
     }
 
     .harkonnen::before {
@@ -88,24 +110,12 @@
       background-image: url('images/harkonnen-cropped.svg');
       background-repeat: no-repeat;
     }
-
-    .atreides {
-      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
-      border-radius: 3px;
-      background: #b3bead;
-    }
-
-    .atreides::before {
-      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
-      background-image: url('images/atreides-cropped.svg');
-      background-repeat: no-repeat;
-    }
-
+    
     .fremen,
     .fremen-advance {
       padding: 0.3rem 0.2rem 0.3rem 0.3rem;
       border-radius: 3px;
-      background: #d9c6a4;
+      background: var(--fremen-light);
     }
 
     .fremen::before,
@@ -119,7 +129,7 @@
     .spacing-advance {
       padding: 0.3rem 0.2rem 0.3rem 0.3rem;
       border-radius: 3px;
-      background: #d2aa9b;
+      background: var(--spacing-light);
     }
 
     .spacing::before,
@@ -132,7 +142,7 @@
     .bene {
       padding: 0.3rem 0.2rem 0.3rem 0.3rem;
       border-radius: 3px;
-      background-color: #b3b6be;
+      background-color: var(--bene-light);
     }
 
     .bene::before {
@@ -144,7 +154,7 @@
     .emperor {
       padding: 0.3rem 0.2rem 0.3rem 0.3rem;
       border-radius: 3px;
-      background-color: #b99b99;
+      background-color: var(--emperor-light);
     }
 
     .emperor::before {
@@ -152,7 +162,19 @@
       background-image: url('images/emperor-cropped.svg');
       background-repeat: no-repeat;
     }
-
+    
+    .ixian {
+      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+      border-radius: 3px;
+      background: var(--ixian-light);
+    }
+    
+    .ixian::before {
+      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+      background-image: url('images/atreides-cropped.svg');
+      background-repeat: no-repeat;
+    }
+    
     .advanced::before {
       content: '⚙️';
     }
@@ -227,21 +249,37 @@
 
     <!-- Faction Buttons and Advanced Rules Toggle -->
     <div class="flex justify-center flex-wrap gap-2 mb-6">
-      <button onclick="toggleFaction('atreides')" id="btn-atreides" style="background: #b3bead;"
+      <button onclick="toggleFaction('atreides')" id="btn-atreides" style="background: var(--atreides-light);"
         class="faction-button px-3 py-1 rounded"><img src="images/atreides-cropped.svg" />Atreides</button>
-      <button onclick="toggleFaction('harkonnen')" id="btn-harkonnen" style="background: #b2b2b2;"
+      
+      <button onclick="toggleFaction('harkonnen')" id="btn-harkonnen" style="background: var(--harkonnen-light);"
         class="faction-button bg-red-600 px-3 py-1 rounded"><img src="images/harkonnen-cropped.svg" /> Harkonnen</button>
-      <button onclick="toggleFaction('fremen')" id="btn-fremen" style="background: #d9c6a4;"
+      
+      <button onclick="toggleFaction('fremen')" id="btn-fremen" style="background: var(--fremen-light);"
         class="faction-button bg-green-600 px-3 py-1 rounded"><img src="images/fremen-cropped.svg" /> Fremen</button>
-      <button onclick="toggleFaction('spacing')" id="btn-spacing" style="background: #d2aa9b;"
+      
+      <button onclick="toggleFaction('spacing')" id="btn-spacing" style="background: var(--spacing-light);"
         class="faction-button bg-yellow-600 px-3 py-1 rounded"><img src="images/spacing-guild-cropped.svg" /> Spacing
         Guild</button>
-      <button onclick="toggleFaction('bene')" id="btn-bene" style="background: #b4b6bf;"
+      
+      <button onclick="toggleFaction('bene')" id="btn-bene" style="background: var(--bene-light);"
         class="faction-button bg-purple-600 px-3 py-1 rounded"><img src="images/bene-gesserit-cropped.svg" /> Bene
         Gesserit</button>
-      <button onclick="toggleFaction('emperor')" id="btn-emperor" style="background: #b99b99;"
+      
+      <button onclick="toggleFaction('emperor')" id="btn-emperor" style="background: var(--emperor-light);"
         class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/emperor-cropped.svg" /> Emperor</button>
       <div class="w-8"></div>
+      
+      
+      <button onclick="toggleFaction('ixian')" id="btn-ixian" style="background: var(--ixian-light);"
+        class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/emperor-cropped.svg" /> Ixian</button>
+      
+      <!-- <button onclick="toggleFaction('tleilaxu')" id="btn-emperor" style="background: #b99b99;"
+        class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/emperor-cropped.svg" /> Tleilaxu</button>
+       -->
+      <div class="w-8"></div>
+      
+      
       <button onclick="toggleAdvancedRules()" id="btn-advanced"
         class="advanced-button bg-orange-600 px-3 py-1 rounded">⚙️ Advanced Rules</button>
       <button onclick="toggleAlliances()" id="btn-alliances" class="advanced-button bg-orange-600 px-3 py-1 rounded">⚙️
@@ -342,7 +380,7 @@
       if (isAdvancedRulesActive)
         activeFactions.add(isAdvancedRulesActive ? 'advance' : 'basic');
 
-      ['atreides', 'harkonnen', 'fremen', 'spacing', 'bene', 'emperor'].forEach(faction => {
+      ['atreides', 'harkonnen', 'fremen', 'spacing', 'bene', 'emperor', 'ixian'].forEach(faction => {
         const button = document.getElementById(`btn-${faction}`);
         const isActive = button.classList.contains('active');
 
@@ -381,6 +419,8 @@
       highlightTerm("BENE GESSERIT", "#40495e");
       highlightTerm("SPACING GUILD", "#a75837");
       highlightTerm("EMPEROR", "#743734");
+      
+      highlightTerm("IXIAN", "#9ea374");
     }
 
     function toggleAlliances() {
