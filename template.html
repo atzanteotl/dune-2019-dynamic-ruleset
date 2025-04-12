@@ -136,6 +136,13 @@
       background-image: url('images/emperor-cropped.svg');
     }
 
+    .ixian {
+      background-color: rgb(208,214,181);
+    }
+    .ixian::before {
+      background-image: url('images/faction-icon.ixian.svg');
+    }
+
     .advanced::before {
       content: '⚙️';
     }
@@ -224,6 +231,8 @@
         Gesserit</button>
       <button onclick="toggleFaction('emperor')" id="btn-emperor" style="background: #b99b99;"
         class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/emperor-cropped.svg" /> Emperor</button>
+      <button onclick="toggleFaction('ixian')" id="btn-ixian" style="background-color: rgb(208,214,181);"
+        class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/faction-icon.ixian.svg" /> Ixian</button>
       <div class="w-8"></div>
       <button onclick="toggleAdvancedRules()" id="btn-advanced"
         class="advanced-button bg-orange-600 px-3 py-1 rounded">⚙️ Advanced Rules</button>
@@ -325,7 +334,15 @@
       if (isAdvancedRulesActive)
         activeFactions.add(isAdvancedRulesActive ? 'advance' : 'basic');
 
-      ['atreides', 'harkonnen', 'fremen', 'spacing', 'bene', 'emperor'].forEach(faction => {
+      [
+        'atreides',
+        'harkonnen',
+        'fremen',
+        'spacing',
+        'bene',
+        'emperor',
+        'ixian',
+      ].forEach(faction => {
         const button = document.getElementById(`btn-${faction}`);
         const isActive = button.classList.contains('active');
 
@@ -364,6 +381,7 @@
       highlightTerm("BENE GESSERIT", "#40495e");
       highlightTerm("SPACING GUILD", "#a75837");
       highlightTerm("EMPEROR", "#743734");
+      highlightTerm("IXIAN", "rgb(161,171,107)");
     }
 
     function toggleAlliances() {
