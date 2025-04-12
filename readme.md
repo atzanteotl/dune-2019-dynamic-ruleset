@@ -11,9 +11,7 @@ The rules.csv has the following fields:
 
 **class1** - empty or "alliances". Used to identify alliance specific rules. They will appear as grey boxes in the ruleset when the alliance button is pressed.
 
-**class2** - empty, bene-rule, fremen-rule, atreides-rule, harkonnen-rule, spacing-rule, emperor-rule. Used to identify faction specific rules. There are advance, basic, and "no" variants of each class. (e.g. no-fremen-
-
-**rule**, fremen-advance-rule).
+**class2** - empty, bene-rule, fremen-rule, atreides-rule, harkonnen-rule, spacing-rule, emperor-rule. Used to identify faction specific rules. There are advance, basic, and "no" variants of each class. (e.g. no-fremen-rule, fremen-advance-rule).
 
 **faction** - used to highlight a particular faction rule to indicate that this is a specific *rule for that faction*.
 
