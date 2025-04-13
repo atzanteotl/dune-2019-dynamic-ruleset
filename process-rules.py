@@ -56,9 +56,9 @@ if __name__ == '__main__':
     environment = Environment(loader=FileSystemLoader("."))
     template = environment.get_template("template.html")
 
-    print(sections[1])
+    print(sections[0])
 
-    content = template.render(sections[1])
+    content = template.render({'sections': sections})
 
     with open('index.html', mode="w", encoding="utf-8") as message:
         message.write(content)        

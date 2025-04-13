@@ -10,206 +10,7 @@
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 
-
-  <style>
-    :root {
-      --atreides-light: #b3bead;
-      --harkonnen-light: #b2b2b2;
-      --fremen-light: #d9c6a4;
-      --spacing-light: #d2aa9b;
-      --bene-light: #b4b6bf;
-      --emperor-light: #b99b99;
-      --ixian-light: rgb(208,214,181);
-    }
-  
-    .alliances {
-      display: none;
-      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
-      border-radius: 3px;
-      background: #e4e4e4;
-    }
-  
-    .alliances.active {
-      display: block;
-    }
-  
-    li.faction-rule,
-    li.advanced-rule {
-      display: none;
-    }
-  
-    li.faction-rule.active,
-    li.advanced-rule.active {
-      display: revert;
-    }
-  
-    .faction-button.active,
-    .advanced-button.active {
-      outline: 3px solid white;
-      opacity: 1;
-    }
-  
-    .faction-button,
-    .advanced-button {
-      opacity: 0.7;
-      transition: opacity 0.2s, outline 0.2s;
-      vertical-align: middle;
-    }
-  
-    .faction-button img {
-      width: 30px;
-      float: left;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-  
-    .sectionHeader {
-      color: white;
-      font-weight: 700;
-      font-size: 1.25rem;
-      line-height: 1.75rem;
-      padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-      margin-bottom: 0.75rem;
-      border: 0px solid #991b1b;
-      border-radius: 4px;
-      background-color: #991b1b;
-    }
-  
-    .element {
-      border: 0px solid #991b1b;
-      border-radius: 4px;
-      background-color: #991b1b;
-    }
-  
-  
-    .icon::before {
-      margin-right: 0.15rem;
-    }
-  
-    .faction-rule div {
-      padding: 0.3rem 0.2rem 0.3rem 0.3rem;
-      border-radius: 3px;
-    }
-    .faction-rule div::before {
-      content: '\00a0\00a0\00a0\00a0\00a0\00a0';
-      background-repeat: no-repeat;
-    }
-  
-    .harkonnen {
-      background: var(--harkonnen-light);
-    }
-  
-    .harkonnen::before {
-      background-image: url('images/harkonnen-cropped.svg');
-    }
-  
-    .atreides {
-      background: var(--atreides-light);
-    }
-  
-    .atreides::before {
-      background-image: url('images/atreides-cropped.svg');
-    }
-    
-    .fremen,
-    .fremen-advance {
-      background: var(--fremen-light);
-    }
-  
-    .fremen::before,
-    .fremen-advance::before {
-      background-image: url('images/fremen-cropped.svg');
-    }
-  
-    .spacing,
-    .spacing-advance {
-      background: var(--spacing-light);
-    }
-  
-    .spacing::before,
-    .spacing-advance::before {
-      background-image: url('images/spacing-guild-cropped.svg');
-    }
-  
-    .bene {
-      background-color: var(--bene-light);
-    }
-  
-    .bene::before {
-      background-image: url('images/bene-gesserit-cropped.svg');
-    }
-  
-    .emperor {
-      background-color: var(--emperor-light);
-    }
-  
-    .emperor::before {
-      background-image: url('images/emperor-cropped.svg');
-    }
-  
-    .ixian {
-      background-color: var(--ixian-light);
-    }
-    .ixian::before {
-      background-image: url('images/faction-icon.ixian.svg');
-    }
-    
-    .advanced::before {
-      content: '⚙️';
-    }
-  
-    /* Fixed search bar without overlapping title */
-    .search-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #2d3748;
-      padding: 0.5rem;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-  
-    .search-container input {
-      width: 250px;
-      padding: 0.25rem;
-      border-radius: 4px;
-      border: none;
-      font-size: 0.875rem;
-      color: black;
-    }
-  
-    .content-container {
-      margin-top: 50px;
-    }
-  
-    .subsection {
-      padding: 0.8rem;
-      border-radius: 0.25rem;
-      color: #000000;
-      background-color: #ffffff;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-      break-inside: avoid-column;
-    }
-  
-    .subsection-header {
-      position: sticky;
-      top: 0;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-      background-color: #dcc68c;
-    }
-  
-    .sublist {
-      padding-left: 1.25rem; 
-      list-style-type: circle;
-    }
-  
-  </style>
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -228,6 +29,39 @@
 
     <!-- Faction Buttons and Advanced Rules Toggle -->
     <div class="flex justify-center flex-wrap gap-2 mb-6">
+      
+      
+      
+      
+      <button onclick="toggleFaction('atreides')" id="btn-atreides" style="background: var(--atreides-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.atreides.svg" />Atreides</button>
+      
+      
+      <button onclick="toggleFaction('harkonnen')" id="btn-harkonnen" style="background: var(--harkonnen-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.harkonnen.svg" />Harkonnen</button>
+      
+      
+      <button onclick="toggleFaction('fremen')" id="btn-fremen" style="background: var(--fremen-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.fremen.svg" />Fremen</button>
+      
+      
+      <button onclick="toggleFaction('spacing')" id="btn-spacing" style="background: var(--spacing-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.spacing.svg" />Spacing Guild</button>
+      
+      
+      <button onclick="toggleFaction('bene')" id="btn-bene" style="background: var(--bene-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.bene.svg" />Bene Gesserit</button>
+      
+      
+      <button onclick="toggleFaction('emperor')" id="btn-emperor" style="background: var(--emperor-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.emperor.svg" />Emperor</button>
+      
+      
+      <button onclick="toggleFaction('ixian')" id="btn-ixian" style="background: var(--ixian-light);"
+      class="faction-button px-3 py-1 rounded"><img src="images/faction-icon.ixian.svg" />Ixian</button>
+      
+      
+      <!-- 
       <button onclick="toggleFaction('atreides')" id="btn-atreides" style="background: var(--atreides-light);"
         class="faction-button px-3 py-1 rounded"><img src="images/atreides-cropped.svg" />Atreides</button>
       
@@ -249,7 +83,7 @@
         class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/emperor-cropped.svg" /> Emperor</button>
       <button onclick="toggleFaction('ixian')" id="btn-ixian" style="background-color: rgb(208,214,181);"
         class="faction-button bg-gray-700 px-3 py-1 rounded"><img src="images/faction-icon.ixian.svg" /> Ixian</button>
-      
+       -->
       <div class="w-8"></div>
       
       <button onclick="toggleAdvancedRules()" id="btn-advanced"
@@ -265,23 +99,25 @@
       <h2 class="sectionHeader">START</h2>
       <div class="bg-white text-black p-4 rounded shadow mb-6 space-y-2">
         <ul class="list-disc pl-5  list-outside ul:list-revert">
-          <li>Each player receives 4 random Traitor Cards and keeps 1 (either opponent or own leader). </li>
-          <li class="faction-rule harkonnen-rule">
-            <div class="harkonnen">HARKONNEN keeps all 4. (Optional): Once and only once, HARKONNEN allowed to discard
-              hand and redraw 4 other Traitor Cards.</div>
-          </li>
-          <!--TLEILAXU receives no traitors. After unused Traitor Cards returned to deck, shuﬄe deck and take top 3 cards. They are Face Dancers.
-        • Set up as per player shield. 1 Treachery Card. 2 for HARKONNEN (needs 2 cards in total, so draw 1 more).-->
-          <li>Each player receives Treachery Cards based on setup.</li>
-          <li>Set up spice, storm, and alliances as per game rules.</li>
-          <li>Place troops as per faction rules.</li>
-          <li class="faction-rule bene-advance-rule">
-            <div class="bene"><b>(Advanced)</b> Instead of starting in the Polar Sink, BENE GESSERIT place one peaceful
-              advisor in any territory of your choice. If they are alone in the territory, flip the advisor to a
-              fighter.</div>
-          </li>
-          <li>Special faction setup rules may apply.</li>
-        </ul>
+                       <li>Players receives 4 random Traitor Cards and keeps 1 (either opponent or own leader).</li>
+                      
+                       <li class="faction-rule  harkonnen-rule ">
+                <div class="harkonnen">HARKONNEN keeps all 4. (Optional): Once and only once, HARKONNEN allowed to discard hand and redraw 4 other Traitor Cards.</div>
+                </li>
+                      
+                       <li>Players receives Treachery Cards based on setup.</li>
+                      
+                       <li>Set up spice, storm, and alliances as per game rules.</li>
+                      
+                       <li>Place troops as per faction rules.</li>
+                      
+                       <li class="faction-rule  bene-advance-rule ">
+                <div class="bene"><strong>(Advanced)</strong> Instead of starting in the Polar Sink, BENE GESSERIT place one peaceful advisor in any territory of their choice. If they are alone in the territory, flip the advisor to a fighter.</div>
+                </li>
+                      
+                       <li>Special faction setup rules may apply.</li>
+                      
+          </ul>
       </div>
 
       <!-- Game Turn Section -->
@@ -292,251 +128,323 @@
         <div class="subsection">
           <h3 class="subsection-header">1. STORM</h3>
           <ul class="list-disc pl-5 ">            
-            <li><strong>(Round 1 only)</strong>  Players to the left and right of the storm each use a battle wheel to dial a number from 0 to 20. The sum advances the storm for Round 1.</li>
-              <li class="faction-rule  ixian-rule ">
+                         <li><strong>(Round 1 only)</strong>  Players to the left and right of the storm each use a battle wheel to dial a number from 0 to 20. The sum advances the storm for Round 1.</li>
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN may, if Ixian forces occupy Hidden Mobile Stronghold, move the HMS up to 3 territories distance to a non-stronghold territory, pointing at a sector of that territory.</div>
                 </li>
-              <li class="faction-rule  ixian-rule ">
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN, if Ixian forces occupy Hidden Mobile Stronghold, as the HMS moves from, into, or through a sector containing spice, immediately collect 2 of those spice per Ixian force in HMS.</div>
                 </li>
-              <li class="faction-rule  no-fremen-rule ">
+              
+                         <li class="faction-rule  no-fremen-rule ">
                 (Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.
                 </li>
-              <li class="faction-rule  fremen-basic-rule ">
+              
+                         <li class="faction-rule  fremen-basic-rule ">
                 (Basic) last 2 players to use battle wheels dial a number from 1 to 3. The sum advances the storm.
                 </li>
-              <li class="faction-rule  fremen-advance-rule ">
+              
+                         <li class="faction-rule  fremen-advance-rule ">
                 <div class="fremen"><strong>(Advanced)</strong> FREMEN randomly pick a STORM card to be revealed next round. FREMEN can immediately see the card. The following round, FREMEN advance the storm as indicated by card. Return card to deck then redo the process.</div>
                 </li>
-              <li class="faction-rule  ixian-rule ">
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian"><strong>(Round 1 only)</strong> IXIAN place Hidden Mobile Stronghold in any non-stronghold territory, pointing at a sector of that territory.</div>
                 </li>
-              <li>Forces &amp; Spice in desert touched by Storm go to Tleilaxu Tanks and Spice Bank.</li>
-              </ul>
+              
+                         <li>Forces &amp; Spice in desert touched by Storm go to Tleilaxu Tanks and Spice Bank.</li>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">2. SPICE BLOW</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Reveal top card. (Round 1 only) Ignore worms and Nexus. Reshuﬄe worms in deck after phase over.</li>
-              <ul class="sublist">
+                         <li>Reveal top card. (Round 1 only) Ignore worms and Nexus. Reshuﬄe worms in deck after phase over.</li>
+              
+                         <ul class="sublist">
               <li>If Territory card, place Spice unless Storm in sector.</li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li>If Worm, Forces and Spice removed from previous territory, then draw until Territory card revealed. Then Nexus happens.</li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  fremen-rule ">
                 <div class="fremen">FREMEN are not devoured by Shai-Hulud. They may ride the sandworm to any location on the board following resolution of the Nexus. If an additional sandworm is drawn, FREMEN may redirect it to any sand territory.</div>
                 </li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  advance-rule ">
                 <strong>(Advanced)</strong> The same rules except there will be two discard piles (Pile A and Pile B). Treat each pile independently.
                 </li>
               </ul>
-              </ul>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">3. CHOAM CHARITY</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Players with 0 or 1 Spice can collect Spice to bring their total to 2 Spice by calling out "CHOAM Charity".</li>
-              </ul>
+                         <li>Players with 0 or 1 Spice can collect Spice to bring their total to 2 Spice by calling out "CHOAM Charity".</li>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">4. BIDDING</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Players must announce how many cards they hold.</li>
-              <li class="faction-rule  no-ixian-rule ">
+                         <li>Players must announce how many cards they hold.</li>
+              
+                         <li class="faction-rule  no-ixian-rule ">
                 Auction the same number of Treachery Cards as number of players holding less than max hand. (4 default).
                 </li>
-              <li class="faction-rule  ixian-rule ">
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN draws one more Treachery Cards than the number up for bid and looks at them. IXIAN puts one card of their choice to the top or bottom of the deck. Remaining cards are shuffled and placed face down for auction.</div>
                 </li>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  ixian-advance-rule ">
                 <div class="ixian">IXIAN may swap out a Treachery Card about to be auctioned with one from their hand <em>once</em> per Bidding Phase.</div>
                 </li>
               </ul>
-              <li class="faction-rule  atreides-rule ">
+              
+                         <li class="faction-rule  atreides-rule ">
                 <div class="atreides">ATREIDES may look at each card as it is offered for auction.</div>
                 </li>
-              <li>Players take turns to initiate bidding (starting with First Player and then to the right of previous first bidder).</li>
-              <ul class="sublist">
+              
+                         <li>Players take turns to initiate bidding (starting with First Player and then to the right of previous first bidder).</li>
+              
+                         <ul class="sublist">
               <li class="faction-rule  emperor-rule ">
                 Min bid 1 Spice. Pay to EMPEROR. EMPEROR always pays to Bank.
                 </li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  no-emperor-rule ">
                 Min bid 1 Spice. Pay to the Bank.
                 </li>
               </ul>
-              <li>Auction until all cards claimed, or 1 card unwanted (remaining cards return to top of deck).</li>
-              <li class="faction-rule  harkonnen-rule ">
+              
+                         <li>Auction until all cards claimed, or 1 card unwanted (remaining cards return to top of deck).</li>
+              
+                         <li class="faction-rule  harkonnen-rule ">
                 <div class="harkonnen">HARKONNEN may take an additional Treachery Card from the deck for each one they win at auction.</div>
                 </li>
-              <li class="faction-rule alliances no-emperor-rule ">
+              
+                         <li class="faction-rule alliances no-emperor-rule ">
                 <strong>Alliances:</strong> Players may pay for part or all of the cost of a treachery card purchased by an ally. They may pay up to, but not more than, the amount of spice equal to the card's purchase price. The player gives this spice directly the bank. A bidder cannot bid more than the total of the spice they have plus the spice that their ally is willing to give to them to help pay for the card.
                 </li>
-              <li class="faction-rule alliances emperor-rule ">
+              
+                         <li class="faction-rule alliances emperor-rule ">
                 <strong>Alliances:</strong> Players may pay for part or all of the cost of a treachery card purchased by an ally. They may pay up to, but not more than, the amount of spice equal to the card's purchase price. The player gives this spice directly to the EMPEROR. If the EMPEROR is the player aiding the ally, however, the spice goes to the ally and is then paid back to the EMPEROR. Bidders cannot bid more than the total of the spice they have plus the spice their ally is willing to give them to help pay for the card.
                 </li>
-              </ul>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">5. REVIVAL</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Players may revive up to 3 troops to their reserve, paying 2 Spice / troop after free revivals limits.</li>
-              <ul class="sublist">
+                         <li>Players may revive up to 3 troops to their reserve, paying 2 Spice / troop after free revivals limits.</li>
+              
+                         <ul class="sublist">
               <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN Cyborg cost 3 Spice to revive.</div>
                 </li>
               </ul>
-              <li>Players may revive 1 leader per turn once all their leaders have been sent to tanks.</li>
-              <ul class="sublist">
+              
+                         <li>Players may revive 1 leader per turn once all their leaders have been sent to tanks.</li>
+              
+                         <ul class="sublist">
               <li>Must pay the leader's combat value in spice.</li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li>Revived leaders may not be revived again until all leaders for that player have been revived and sent back to the tanks.</li>
               </ul>
-              </ul>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">6. SHIPMENT &amp; MOVEMENT</h3>
           <ul class="list-disc pl-5 ">            
-            <li class="faction-rule  atreides-rule ">
+                         <li class="faction-rule  atreides-rule ">
                 <div class="atreides">ATREIDES may look at the top card of the Spice Deck before any player acts in this phase.</div>
                 </li>
-              <li><em>No Shipment/Movement:</em> from / through / into sector in Storm, territory with ally, Stronghold with forces of 2 other factions.</li>
-              <li><strong><em>Shipment</em></strong></li>
-              <li class="faction-rule  spacing-rule ">
+              
+                         <li><em>No Shipment/Movement:</em> from / through / into sector in Storm, territory with ally, Stronghold with forces of 2 other factions.</li>
+              
+                         <li><strong><em>Shipment</em></strong></li>
+              
+                         <li class="faction-rule  spacing-rule ">
                 <div class="spacing">SPACING GUILD may choose to make their shipment and movement at any time they choose in this phase. Pay shipping costs to the Spice Bank.</div>
                 </li>
-              <li class="faction-rule  spacing-rule ">
+              
+                         <li class="faction-rule  spacing-rule ">
                 Players may add Forces from reserves to any 1 territory. 1 Spice per force into Stronghold, 2 Spice per force into other territory. Pay to SPACING GUILD (SPACING GUILD pays to the Bank).
                 </li>
-              <li class="faction-rule  no-spacing-rule ">
+              
+                         <li class="faction-rule  no-spacing-rule ">
                 Players may add Forces from reserves to any 1 territory. 1 Spice per force into Stronghold, 2 Spice per force into other territory. Pay to the Bank.
                 </li>
-              <li class="faction-rule  fremen-rule ">
+              
+                         <li class="faction-rule  fremen-rule ">
                 <div class="fremen"><em>During Shipment only</em>, FREMEN may bring their reserves into the storm (losing half).</div>
                 </li>
-              <li class="faction-rule  bene-rule ">
+              
+                         <li class="faction-rule  bene-rule ">
                 <div class="bene">Anytime a player ships from off-planet, BENE GESSERIT may ship 1 advisor for free to the same territory (including Mobile Stronghold) or to the Polar Sink.</div>
                 </li>
-              <li class="faction-rule  fremen-rule ">
+              
+                         <li class="faction-rule  fremen-rule ">
                 <div class="fremen">FREMEN may bring any or all of their reserves for free onto or within two territories of the Great Flat.</div>
                 </li>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  fremen-advance-rule ">
                 <div class="fremen"><strong>(Advanced)</strong> FREMEN allowed to move through/ship in Storm at half loss.</div>
                 </li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li>Must be clear which sector Forces are shipped or moved.</li>
               </ul>
-              <li><strong><em>Movement</em></strong></li>
-              <li>Players may move any number of forces from any 1 territory to adjacent territory. Move up to 3 territories if theyhave presence in Arrakeen or Carthag. (sectors don't count for movement distance)</li>
-              <li class="faction-rule  ixian-rule ">
+              
+                         <li><strong><em>Movement</em></strong></li>
+              
+                         <li>Players may move any number of forces from any 1 territory to adjacent territory. Move up to 3 territories if theyhave presence in Arrakeen or Carthag. (sectors don't count for movement distance)</li>
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN Cyborg (starred) forces, and any Suboid forces with them, move up to 2 territories distance.</div>
                 </li>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li>You may move the same forces you shipped.</li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  fremen-rule ">
                 <div class="fremen">FREMEN forces may move two territories on foot.</div>
                 </li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li>Moving to a diferent sector within same territory counts as a movement action.</li>
               </ul>
-              <li class="faction-rule  spacing-rule ">
+              
+                         <li class="faction-rule  spacing-rule ">
                 <div class="spacing">SPACING GUILD may make one of three types of shipment and then one movement: [1] Ship from home planet to Dune. [2] Ship from one territory to another. [3] Ship from Dune to home planet.</div>
                 </li>
-              <li class="faction-rule alliances no-spacing-rule ">
+              
+                         <li class="faction-rule alliances no-spacing-rule ">
                 <strong>Alliances:</strong> A player may pay for part or all of the cost of an ally's shipment. They may pay up to, but not more than, the amount of spice equal to the shipment's cost. The player gives this spice directly to the bank.
                 </li>
-              <li class="faction-rule alliances spacing-rule ">
+              
+                         <li class="faction-rule alliances spacing-rule ">
                 <strong>Alliances:</strong> A player may pay for part or all of the cost of an ally's shipment. They may pay up to, but not more than, the amount of spice equal to the shipment's cost. The player gives this spice directly to the SPACING GUILD. Any spice that the SPACING GUILD is paying for the shipment goes to the Spice Bank.
                 </li>
-              </ul>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">7. BATTLE</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Players must battle in all territories with 2 or more factions, except if separated by Storm, or at Polar Sink.</li>
-              <li>First Player is aggressor and must resolve ALL their battles. Then the aggressor passes to the right and so on. Aggressor wins ties.</li>
-              <li>Combatants secretly dial a number from 0 to total strength of Forces in territory, and leader/cheap hero (mandatory unless none available, must announce if so), and optionally 1 weapon and/or 1 defense treachery card if leader/cheap hero present. (Useless card replaces a weapon/defense card). Weapon kills leader unprotected by defense. Killed leaders don't count in battle.</li>
-              <li class="faction-rule  basic-rule ">
+                         <li>Players must battle in all territories with 2 or more factions, except if separated by Storm, or at Polar Sink.</li>
+              
+                         <li>First Player is aggressor and must resolve ALL their battles. Then the aggressor passes to the right and so on. Aggressor wins ties.</li>
+              
+                         <li>Combatants secretly dial a number from 0 to total strength of Forces in territory, and leader/cheap hero (mandatory unless none available, must announce if so), and optionally 1 weapon and/or 1 defense treachery card if leader/cheap hero present. (Useless card replaces a weapon/defense card). Weapon kills leader unprotected by defense. Killed leaders don't count in battle.</li>
+              
+                         <li class="faction-rule  basic-rule ">
                 (Basic) Forces have 1 combat strength per token.
                 </li>
-              <li class="faction-rule  ixian-rule ">
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN Suboid forces have 0.5 combat strength per token, Cyborg (starred) forces have 2 combat strength per token.</div>
                 </li>
-              <li class="faction-rule  advance-rule ">
+              
+                         <li class="faction-rule  advance-rule ">
                 <strong>(Advanced)</strong> Forces have 0.5 combat strength per token (Emperor Sardaukar is 1) unless fed 1 spice per Force, then they are worth 1 strength (Sardaukar is 2)
                 </li>
-              <li class="faction-rule  fremen-rule ">
+              
+                         <li class="faction-rule  fremen-rule ">
                 <div class="fremen">FREMEN forces fight at full strength without paying spice. FREMEN Fedaykin commandos are worth two normal forces in battle and when taking losses.</div>
                 </li>
-              <li class="faction-rule  ixian-rule ">
+              
+                         <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN Cyborg are worth two normal forces in battle. Suboids are worth half a force. Suboids cannot be supported with spice but each can be sacrificed to spare a Cyborg that would be lost after battle.</div>
                 </li>
-              <li class="faction-rule  bene-rule ">
+              
+                         <li class="faction-rule  bene-rule ">
                 <div class="bene">BENE GESSERIT may Voice opponents to play or not play cards.</div>
                 </li>
-              <li class="faction-rule  atreides-rule ">
+              
+                         <li class="faction-rule  atreides-rule ">
                 <div class="atreides">ATREIDES may force their opponent to reveal either their dial value, leader, weapon card, or defence card.</div>
                 </li>
-              <li class="faction-rule  harkonnen-rule ">
+              
+                         <li class="faction-rule  harkonnen-rule ">
                 <div class="harkonnen">HARKONNEN may capture a random leader from their oppenent if HARKONNEN win the battle. They may either (a) immediately kill the leader and receive 2 spice or (b) keep the leader to use in battle, but then return that leader to their faction once used.</div>
                 </li>
-              </ul>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">8. SPICE HARVEST</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Players collect spice from territories.</li>
-              <ul class="sublist">
+                         <li>Players collect spice from territories.</li>
+              
+                         <ul class="sublist">
               <li>2 Spice per Force in territory, or 3 Spice per Force if player controls Arrakeen or Carthag.</li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  ixian-rule ">
                 <div class="ixian">IXIAN Cyborg forces instead collect 3 Spice each.</div>
                 </li>
               </ul>
-              <ul class="sublist">
+              
+                         <ul class="sublist">
               <li class="faction-rule  advance ">
                 <strong>(Advanced)</strong> In addition, 2 Spice each for who occupies Arrakeen/Carthag and 1 Spice for Tuek's Sietch.
                 </li>
               </ul>
-              </ul>
+              
+            </ul>
         </div>
         
         <div class="subsection">
           <h3 class="subsection-header">9. MENTAT PAUSE PHASE</h3>
           <ul class="list-disc pl-5 ">            
-            <li>Players gather the Spice they received as bribes (from in front of their shields).</li>
-              <li>If players in an alliance have forces in 4 strongholds, they win the game.</li>
-              <li>If a player not in an alliance has forces in 3 strongholds, they win the game.</li>
-              <li class="faction-rule  fremen-rule ">
+                         <li>Players gather the Spice they received as bribes (from in front of their shields).</li>
+              
+                         <li>If players in an alliance have forces in 4 strongholds, they win the game.</li>
+              
+                         <li>If a player not in an alliance has forces in 3 strongholds, they win the game.</li>
+              
+                         <li class="faction-rule  fremen-rule ">
                 <div class="fremen">FREMEN win if: 1) FREMEN or no faction occupies Sietch Tabr and Habbanya Sietch, and 2) None of the great houses (Harkonnen, Atreides, Richese, or the Emperor) occupies Tuek's Sietch.</div>
                 </li>
-              <li class="faction-rule  spacing-rule ">
+              
+                         <li class="faction-rule  spacing-rule ">
                 <div class="spacing">SPACING GUILD win if no other faction has won the game by the end</div>
                 </li>
-              <li class="faction-rule  bene-rule ">
+              
+                         <li class="faction-rule  bene-rule ">
                 <div class="bene">BENE GESSERIT win alone If the faction they predicted win in the turn they predicted.</div>
                 </li>
-              </ul>
+              
+            </ul>
         </div>
         
       </div>

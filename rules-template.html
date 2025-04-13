@@ -1,0 +1,17 @@
+             {% if rule.depth > 1 -%}
+              <ul class="sublist">
+              {% endif -%}
+              {% if rule.class1 is none and rule.class2 is none -%}
+              <li>{{ rule.text }}</li>
+              {% else -%}
+              <li class="faction-rule {{ rule.class1 if rule.class1 }} {{ rule.class2 if rule.class2 }} {{ rule.class3 if rule.class3 }}">
+                {% if rule.faction -%}
+                <div class="{{ rule.faction }}">{{ rule.text }}</div>
+                {% else -%}
+                {{ rule.text }}
+                {% endif -%}              
+              </li>
+              {% endif -%}
+              {% if rule.depth > 1 -%}
+              </ul>
+              {% endif -%}

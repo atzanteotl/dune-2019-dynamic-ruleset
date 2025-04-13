@@ -1,0 +1,196 @@
+  :root {
+  --atreides-light: #b3bead;
+  --harkonnen-light: #b2b2b2;
+  --fremen-light: #d9c6a4;
+  --spacing-light: #d2aa9b;
+  --bene-light: #b4b6bf;
+  --emperor-light: #b99b99;
+  --ixian-light: rgb(208,214,181);
+}
+
+.alliances {
+  display: none;
+  padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+  border-radius: 3px;
+  background: #e4e4e4;
+}
+
+.alliances.active {
+  display: block;
+}
+
+li.faction-rule,
+li.advanced-rule {
+  display: none;
+}
+
+li.faction-rule.active,
+li.advanced-rule.active {
+  display: revert;
+}
+
+.faction-button.active,
+.advanced-button.active {
+  outline: 3px solid white;
+  opacity: 1;
+}
+
+.faction-button,
+.advanced-button {
+  opacity: 0.7;
+  transition: opacity 0.2s, outline 0.2s;
+  vertical-align: middle;
+}
+
+.faction-button img {
+  width: 30px;
+  float: left;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.sectionHeader {
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 0px solid #991b1b;
+  border-radius: 4px;
+  background-color: #991b1b;
+}
+
+.element {
+  border: 0px solid #991b1b;
+  border-radius: 4px;
+  background-color: #991b1b;
+}
+
+
+.icon::before {
+  margin-right: 0.15rem;
+}
+
+.faction-rule div {
+  padding: 0.3rem 0.2rem 0.3rem 0.3rem;
+  border-radius: 3px;
+}
+.faction-rule div::before {
+  content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+  background-repeat: no-repeat;
+}
+
+.harkonnen {
+  background: var(--harkonnen-light);
+}
+
+.harkonnen::before {
+  background-image: url('images/faction-icon.harkonnen.svg');
+}
+
+.atreides {
+  background: var(--atreides-light);
+}
+
+.atreides::before {
+  background-image: url('images/faction-icon.atreides.svg');
+}
+
+.fremen,
+.fremen-advance {
+  background: var(--fremen-light);
+}
+
+.fremen::before,
+.fremen-advance::before {
+  background-image: url('images/faction-icon.fremen.svg');
+}
+
+.spacing,
+.spacing-advance {
+  background: var(--spacing-light);
+}
+
+.spacing::before,
+.spacing-advance::before {
+  background-image: url('images/faction-icon.spacing.svg');
+}
+
+.bene {
+  background-color: var(--bene-light);
+}
+
+.bene::before {
+  background-image: url('images/faction-icon.bene.svg');
+}
+
+.emperor {
+  background-color: var(--emperor-light);
+}
+
+.emperor::before {
+  background-image: url('images/faction-icon.emperor.svg');
+}
+
+.ixian {
+  background-color: var(--ixian-light);
+}
+.ixian::before {
+  background-image: url('images/faction-icon.ixian.svg');
+}
+
+.advanced::before {
+  content: '⚙️';
+}
+
+/* Fixed search bar without overlapping title */
+.search-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2d3748;
+  padding: 0.5rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-container input {
+  width: 250px;
+  padding: 0.25rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.875rem;
+  color: black;
+}
+
+.content-container {
+  margin-top: 50px;
+}
+
+.subsection {
+  padding: 0.8rem;
+  border-radius: 0.25rem;
+  color: #000000;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  break-inside: avoid-column;
+}
+
+.subsection-header {
+  position: sticky;
+  top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #dcc68c;
+}
+
+.sublist {
+  padding-left: 1.25rem; 
+  list-style-type: circle;
+}
