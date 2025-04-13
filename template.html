@@ -337,6 +337,7 @@
   <script>
     const activeFactions = new Set();
     let isAdvancedRulesActive = false;
+    let isAlliancesRulesActive = false;
 
     function toggleFaction(faction) {
       const button = document.getElementById(`btn-${faction}`);
@@ -346,11 +347,15 @@
     }
 
     function setActiveFactions() {
-      isAdvancedRulesActive = document.getElementById('btn-advanced').classList.contains('active');
       activeFactions.clear();
 
+      isAdvancedRulesActive = document.getElementById('btn-advanced').classList.contains('active');
+      isAlliancesRulesActive = document.getElementById('btn-alliances').classList.contains('active'); 
+      
       if (isAdvancedRulesActive)
         activeFactions.add(isAdvancedRulesActive ? 'advance' : 'basic');
+      if (isAlliancesRulesActive)
+        activeFactions.add('alliances');
 
       [
         'atreides',
@@ -375,6 +380,12 @@
     }
 
     function updateFactionRules() {
+      document.querySelectorAll('.alliances').forEach(rule => {
+        rule.classList.toggle('active', isAlliancesRulesActive);
+      });
+      
+      
+      
       document.querySelectorAll('.faction-rule').forEach(rule => {
         const rules = Array.from(rule.classList).filter(cls => cls !== 'faction-rule' && cls !== 'active' && cls !== 'list-item');
         rule.classList.toggle('active', rules.every(f => activeFactions.has(f)));
@@ -404,9 +415,12 @@
 
     function toggleAlliances() {
       document.getElementById('btn-alliances').classList.toggle('active');
-      document.querySelectorAll('.alliances').forEach(rule => {
-        rule.classList.toggle('active');
-      });
+      setActiveFactions();
+      updateFactionRules();
+      highlight();
+      // document.querySelectorAll('.alliances').forEach(rule => {
+      //   rule.classList.toggle('active');
+      // });
     }
 
     function toggleAdvancedRules() {
